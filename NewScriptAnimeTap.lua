@@ -110,7 +110,7 @@ local Section = Tab:NewSection("AutoYen")
 
 local selectedYen
 
-Section:NewDropdown("Yen Selected World", "Credit BakiDan", {"Naruto", "DemonSlayer", "TokyoGhoul", "AttackOnTitans", "JujutsuKaisen", "SwordArtOnline", "Halloween", "OnePiece", "JoJoStand", "MyHeroAcademia", "StarterYenselectedYen", "VIP", "GoblinSlayer", "WhiteClover", "PredatorX"}, function(value)
+Section:NewDropdown("Yen Selected World", "Credit BakiDan", {"Naruto", "DemonSlayer", "TokyoGhoul", "AttackOnTitans", "JujutsuKaisen", "SwordArtOnline", "Halloween", "OnePiece", "JoJoStand", "MyHeroAcademia", "StarterWorld", "VIP", "GoblinSlayer", "WhiteClover", "PredatorX"}, function(value)
     selectedYen = value
     print(value)
 end)
