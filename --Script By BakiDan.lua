@@ -48,7 +48,7 @@ getgenv().buySaoUltraEgg = false;
 getgenv().buyJujutsuEgg = false;
 getgenv().buyGoblinSlayerEgg = false;
 getgenv().buyBlackCoverEgg = false;
-
+getgenv().buyHunterEgg = false;
 
 local remotePatch = game:GetService("ReplicatedStorage")
 
@@ -489,6 +489,18 @@ Section:NewToggle("AutoBuy White Slayer", "Credit By BakiDan", function(state)
     end
 end)
 
+local Section = Tab:NewSection("World HxH")
+
+Section:NewToggle("AutoBuy HunterEgg", "Credit By BakiDan", function(state)
+    getgenv().buyHunterEgg = state
+    print('Auto Tap is: ', state);
+    if state then
+        buyHunterEgg()
+    end
+end)
+
+
+
 local Tab = Window:NewTab("Carft All")
 local Section = Tab:NewSection("Carft All")
 
@@ -517,7 +529,7 @@ local Section = Tab:NewSection("AutoYen")
 
 local selectedYen
 
-Section:NewDropdown("Teleport Selected", "Credit BakiDan", {"Naruto", "DemonSlayer", "TokyoGhoul", "AttackOnTitans", "JujutsuKaisen", "SwordArtOnline", "Halloween", "OnePiece", "JoJoStand", "MyHeroAcademia", "StarterYenselectedYen", "VIP", "GoblinSlayer", "WhiteClover"}, function(value)
+Section:NewDropdown("Yen Selected World", "Credit BakiDan", {"Naruto", "DemonSlayer", "TokyoGhoul", "AttackOnTitans", "JujutsuKaisen", "SwordArtOnline", "Halloween", "OnePiece", "JoJoStand", "MyHeroAcademia", "StarterYenselectedYen", "VIP", "GoblinSlayer", "WhiteClover", "PredatorX"}, function(value)
     selectedYen = value
     print(value)
 end)
@@ -548,7 +560,7 @@ local selectedRebirth
 local Tab = Window:NewTab("AutoRebirthV2")
 local Section = Tab:NewSection("AutoRebirthV2")
 
-Section:NewDropdown("Teleport Selected", "Credit BakiDan", {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 , 20, 21, 22, 23, 24, 25}, function(value)
+Section:NewDropdown("Rebrith Selected", "Credit BakiDan", {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19 , 20, 21, 22, 23, 24, 25}, function(value)
     selectedRebirth = value
     print(value)
 end)
@@ -562,11 +574,6 @@ Section:NewToggle("AutoRebirthV2", "AutoRebirthV2", function(state)
         AutoRebirthV2(selectedRebirth)
     end
 end)
-
-
-
-
-
 
 function AutoRebirthV2(RebirthNumber)
     spawn(function()
@@ -926,6 +933,26 @@ function buyGoblinSlayerEgg()
 end
 
 
+function buyHunterEgg()
+    spawn(function()
+        local A_1 = "PredatorX"
+        local Event = game:GetService("ReplicatedStorage").Remotes.Events.WorldRemote
+        Event:FireServer(A_1)
+        while wait() do
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2262.44751, -59.3721657, 5043.01074, 0.150192261, 4.75740194e-08, -0.988656819, 4.15841654e-08, 1, 5.44371304e-08, 0.988656819, -4.92885057e-08, 0.150192261)
+            if not getgenv().buyHunterEgg then break end;
+            local A_1 = "Predator X Egg"
+            local A_2 = 1
+            local A_3 = true
+            local Event = game:GetService("ReplicatedStorage").Remotes.Events.PurchaseEgg
+            Event:FireServer(A_1, A_2, A_3)
+            wait()
+        end
+    end)
+end
+
+
+
 
 
 
@@ -955,7 +982,7 @@ local Section = Tab:NewSection("Teleport")
 
 local selectedWorld
 
-Section:NewDropdown("Teleport Selected", "Credit BakiDan", {"Naruto", "DemonSlayer", "TokyoGhoul", "AttackOnTitans", "JujutsuKaisen", "SwordArtOnline", "Halloween", "OnePiece", "JoJoStand", "MyHeroAcademia", "StarterWorld", "VIP", "WhiteClover"}, function(value)
+Section:NewDropdown("Teleport Selected", "Credit BakiDan", {"Naruto", "DemonSlayer", "TokyoGhoul", "AttackOnTitans", "JujutsuKaisen", "SwordArtOnline", "Halloween", "OnePiece", "JoJoStand", "MyHeroAcademia", "StarterWorld", "VIP", "WhiteClover", "PredatorX"}, function(value)
     selectedWorld = value
     print(value)
 end)
